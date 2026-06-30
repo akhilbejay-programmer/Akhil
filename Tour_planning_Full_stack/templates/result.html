@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Tour Plan</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#eef5ff;
+}
+
+.container{
+    width:700px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+}
+
+h1{
+    color:#0b5394;
+    text-align:center;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table,th,td{
+    border:1px solid #ccc;
+}
+
+th,td{
+    padding:12px;
+    text-align:center;
+}
+
+th{
+    background:#0b5394;
+    color:white;
+}
+
+.summary{
+    margin-top:25px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+a{
+    display:block;
+    text-align:center;
+    margin-top:25px;
+    text-decoration:none;
+    color:#0b5394;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Your Tour Plan</h1>
+
+<h2>State : {{ state }}</h2>
+
+<table>
+
+<tr>
+<th>Tourist Place</th>
+<th>Budget (₹)</th>
+</tr>
+
+{% for place,cost in selected_places %}
+
+<tr>
+<td>{{ place }}</td>
+<td>{{ cost }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<div class="summary">
+
+Original Budget : ₹{{ budget }}
+
+<br><br>
+
+Remaining Budget : ₹{{ remaining }}
+
+</div>
+
+<a href="/">🏠 Back to Home</a>
+
+</div>
+
+</body>
+</html>
