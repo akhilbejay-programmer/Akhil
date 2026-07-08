@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+</head>
+<style>
+    body{
+        background-color:gold;
+    }
+    h1,h2{
+        color: black;
+        text-align: center;
+    }
+    button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: crimson;
+    color: chartreuse;
+}
+</style>    
+<body>
+
+<h1>Welcome to Akhil's Website 🎉</h1>
+<button onclick="my()">Click me</button>
+<br><br>
+<h2 id="fun"></h2>
+<script>
+    function my()
+    {
+     let akki="Hello User, Login Successful"
+     document.getElementById("fun").innerHTML=akki
+    }
+</script>
+</body>
+</html>

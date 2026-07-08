@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+
+<style>
+body{
+    text-align:center;
+    font-family:Arial;
+    background:black;
+}
+label{
+    font-size:20px;
+    font-weight:bold;
+    color:white;
+}
+input{
+    width:300px;
+    padding:10px;
+    margin-top:100px;
+}
+
+button{
+    padding:10px 20px;
+    margin-top:10px;
+}
+
+p{
+    color:red;
+}
+h1{
+color: aqua;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Welcome to akki's Login Page</h1>
+<form action="/login" method="POST">
+<label for="pas" >Password:</label>
+<input
+type="password"
+name="password"
+id="pas"
+placeholder="Enter Password"
+required>
+
+<br><br>
+
+<button type="submit">Login</button>
+<button type="button" onclick="window.location.href='/signup'">Signup</button>
+
+</form>
+
+<p>{{ message1 }}</p>
+<p style="color:chartreuse;">{{ message2 }}</p>
+
+</body>
+</html>

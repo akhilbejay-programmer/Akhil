@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+
+    <style>
+        body{
+            text-align:center;
+            font-family:Arial;
+            margin: 0;
+            height: 100vh;
+            animation: bgColor 5s infinite;
+}
+@keyframes bgColor{
+    0%{background-color: red;}
+    20%{background-color: blue;}
+    40%{background-color:deeppink;}
+    60%{background-color: orange;}
+    80%{background-color:darkgreen;}
+    100%{background-color: crimson;}
+}
+        input{
+            width:300px;
+            padding:10px;
+            margin:10px;
+            color:maroon;
+        }
+
+        button{
+            padding:10px 20px;
+            color: chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Create Account</h1>
+
+<form action="/register" method="POST">
+
+<input type="text" name="name" placeholder="Enter Username" required><br>
+
+<input type="password" name="pass" placeholder="Create Password" required><br>
+
+<button type="submit">Create Account</button>
+
+</form>
+
+<br>
+
+<button onclick="window.location.href='/'">
+    Back to Login
+</button>
+
+</body>
+</html>
