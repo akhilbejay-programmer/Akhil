@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Buy {{ vegetable.name|title }} - Akhil's V.V.M.
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        /* ==============================
+           PURCHASE PAGE
+        ============================== */
+
+        .purchase-page {
+            min-height: calc(100vh - 76px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 60px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f7faf5,
+                    #e8f5e9
+                );
+        }
+
+
+        .purchase-container {
+            width: 100%;
+            max-width: 850px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: white;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px rgba(30, 80, 45, 0.12);
+        }
+
+
+        /* ==============================
+           VEGETABLE DISPLAY
+        ============================== */
+
+        .purchase-vegetable {
+            min-height: 500px;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #dff2e1,
+                    #c8e8ce
+                );
+        }
+
+
+        .purchase-emoji {
+            width: 220px;
+            height: 220px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.65);
+
+            font-size: 115px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 20px 45px rgba(40, 90, 50, 0.10);
+        }
+
+
+        .purchase-vegetable h1 {
+            color: #1d5733;
+
+            font-size: 34px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .purchase-vegetable p {
+            color: #5f7766;
+
+            font-size: 14px;
+        }
+
+
+        .kg-price {
+            margin-top: 20px;
+
+            color: #218449;
+
+            font-size: 25px;
+
+            font-weight: 800;
+        }
+
+
+        .kg-price span {
+            color: #718078;
+
+            font-size: 13px;
+
+            font-weight: 500;
+        }
+
+
+        /* ==============================
+           PURCHASE FORM
+        ============================== */
+
+        .purchase-form-section {
+            padding: 50px 45px;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .form-tag {
+            color: #27884b;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .purchase-form-section h2 {
+            color: #183c29;
+
+            font-size: 31px;
+
+            line-height: 1.2;
+
+            margin-bottom: 10px;
+        }
+
+
+        .form-description {
+            color: #718078;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* ==============================
+           FORM
+        ============================== */
+
+        .purchase-form {
+            display: flex;
+            flex-direction: column;
+
+            gap: 18px;
+        }
+
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+
+        .form-group label {
+            color: #294a35;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        .quantity-input {
+            width: 100%;
+
+            padding: 14px 16px;
+
+            border: 1px solid #d5e3d8;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            color: #294a35;
+
+            font-size: 16px;
+
+            background: #fbfdfb;
+
+            transition: 0.3s;
+        }
+
+
+        .quantity-input:focus {
+            border-color: #2b9654;
+
+            box-shadow:
+                0 0 0 3px rgba(43, 150, 84, 0.10);
+
+            background: white;
+        }
+
+
+        .quantity-help {
+            color: #89958d;
+
+            font-size: 12px;
+        }
+
+
+        /* ==============================
+           PRICE INFORMATION
+        ============================== */
+
+        .price-info {
+            padding: 15px;
+
+            border-radius: 10px;
+
+            background: #f0f8f1;
+
+            border: 1px solid #dcecdf;
+        }
+
+
+        .price-info-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            color: #52665a;
+
+            font-size: 13px;
+        }
+
+
+        .price-info-row strong {
+            color: #218449;
+        }
+
+
+        /* ==============================
+           SUBMIT BUTTON
+        ============================== */
+
+        .purchase-btn {
+            width: 100%;
+
+            border: none;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            background: #218b4c;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 10px 25px rgba(33, 139, 76, 0.20);
+        }
+
+
+        .purchase-btn:hover {
+            background: #176d3c;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ==============================
+           BACK BUTTON
+        ============================== */
+
+        .back-link {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            text-align: center;
+
+            color: #63756a;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+
+        .back-link:hover {
+            color: #218449;
+        }
+
+
+        /* ==============================
+           FLASH MESSAGES
+        ============================== */
+
+        .flash-message {
+            padding: 12px 14px;
+
+            margin-bottom: 18px;
+
+            border-radius: 9px;
+
+            background: #fff3f3;
+
+            border: 1px solid #f1cccc;
+
+            color: #b13b3b;
+
+            font-size: 13px;
+        }
+
+
+        /* ==============================
+           RESPONSIVE
+        ============================== */
+
+        @media (max-width: 750px) {
+
+            .purchase-container {
+                grid-template-columns: 1fr;
+            }
+
+
+            .purchase-vegetable {
+                min-height: 360px;
+
+                padding: 30px;
+            }
+
+
+            .purchase-emoji {
+                width: 160px;
+                height: 160px;
+
+                font-size: 85px;
+
+                margin-bottom: 18px;
+            }
+
+
+            .purchase-vegetable h1 {
+                font-size: 28px;
+            }
+
+
+            .purchase-form-section {
+                padding: 40px 25px;
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .purchase-page {
+                padding: 30px 12px;
+            }
+
+
+            .purchase-form-section {
+                padding: 30px 20px;
+            }
+
+
+            .purchase-vegetable {
+                min-height: 320px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         NAVIGATION
+    ============================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            🥕
+            <span>
+                Akhil's V.V.M.
+            </span>
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('index') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('index') }}#vegetables">
+                Vegetables
+            </a>
+
+            <a href="{{ url_for('index') }}#about">
+                About
+            </a>
+
+        </div>
+
+
+        <a href="{{ url_for('index') }}"
+           class="cart-btn">
+
+            🛒 Shop
+
+        </a>
+
+    </nav>
+
+
+    <!-- ==============================
+         PURCHASE PAGE
+    ============================== -->
+
+    <main class="purchase-page">
+
+
+        <div class="purchase-container">
+
+
+            <!-- ==========================
+                 LEFT SIDE
+            =========================== -->
+
+            <div class="purchase-vegetable">
+
+
+                <div class="purchase-emoji">
+
+                    {{ vegetable.emoji }}
+
+                </div>
+
+
+                <h1>
+
+                    {{ vegetable.name|title }}
+
+                </h1>
+
+
+                <p>
+
+                    Fresh quality
+                    {{ vegetable.name }}
+
+                </p>
+
+
+                <div class="kg-price">
+
+                    ₹{{ "%.0f"|format(vegetable.price * 1000) }}
+
+                    <span>
+                        / kg
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ==========================
+                 RIGHT SIDE
+            =========================== -->
+
+            <div class="purchase-form-section">
+
+
+                <div class="form-tag">
+
+                    YOUR PURCHASE
+
+                </div>
+
+
+                <h2>
+
+                    How much would you like?
+
+                </h2>
+
+
+                <p class="form-description">
+
+                    Select the quantity in grams.
+                    After selecting your quantity,
+                    you can choose direct billing or
+                    bargain with our virtual agent Akki.
+
+                </p>
+
+
+                <!-- FLASH MESSAGE -->
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+
+                    {% if messages %}
+
+                        {% for category, message in messages %}
+
+                            <div class="flash-message">
+
+                                {{ message }}
+
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+                {% endwith %}
+
+
+                <!-- ==========================
+                     PURCHASE FORM
+                =========================== -->
+
+                <form method="POST"
+                      action="{{ url_for('purchase', veg_id=veg_id) }}"
+                      class="purchase-form">
+
+
+                    <div class="form-group">
+
+                        <label for="quantity">
+
+                            Quantity
+
+                        </label>
+
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            name="quantity"
+                            class="quantity-input"
+                            placeholder="Enter quantity in grams"
+                            min="100"
+                            max="10000"
+                            step="1"
+                            required
+                        >
+
+
+                        <span class="quantity-help">
+
+                            Minimum: 100 grams
+                            &nbsp; | &nbsp;
+                            Maximum: 10,000 grams
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- PRICE INFORMATION -->
+
+                    <div class="price-info">
+
+                        <div class="price-info-row">
+
+                            <span>
+                                Price
+                            </span>
+
+                            <strong>
+                                ₹{{ "%.0f"|format(vegetable.price * 1000) }} / kg
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="purchase-btn">
+
+                        Continue to Purchase →
+
+                    </button>
+
+
+                </form>
+
+
+                <a href="{{ url_for('index') }}"
+                   class="back-link">
+
+                    ← Back to Vegetable Market
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

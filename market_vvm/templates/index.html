@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Akhil's Virtual Vegetable Market</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🥕 Akhil's V.V.M.
+        </div>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('index') }}">
+                Home
+            </a>
+
+            <a href="#vegetables">
+                Vegetables
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+        </div>
+
+        <a href="{{ url_for('cart') }}"
+           class="cart-btn">
+
+            🛒 Cart
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="tag">
+                🌱 FRESH • SIMPLE • AFFORDABLE
+            </span>
+
+            <h1>
+                Virtual Vegetables
+                <span>Market</span>
+            </h1>
+
+            <p>
+                Welcome to Akhil's Virtual Vegetable Market.
+                Choose your favorite vegetables, select your
+                required quantity, and enjoy a simple shopping
+                experience with our friendly bargaining agent Akki.
+            </p>
+
+            <a href="#vegetables"
+               class="shop-btn">
+
+                🛒 Shop Vegetables
+
+            </a>
+
+        </div>
+
+
+        <!-- HERO VEGETABLE -->
+
+        <div class="hero-vegetable">
+
+            <div class="vegetable-circle">
+                🥕
+            </div>
+
+            <div class="floating-card card-one">
+                🍅 Fresh Tomatoes
+            </div>
+
+            <div class="floating-card card-two">
+                🥔 Quality Potatoes
+            </div>
+
+            <div class="floating-card card-three">
+                🧅 Fresh Onions
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🥬
+            </div>
+
+            <h3>
+                Fresh Vegetables
+            </h3>
+
+            <p>
+                Select from our collection of fresh
+                everyday vegetables.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ⚖️
+            </div>
+
+            <h3>
+                Flexible Quantity
+            </h3>
+
+            <p>
+                Choose exactly how many grams of
+                vegetables you need.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🤝
+            </div>
+
+            <h3>
+                Bargain With Akki
+            </h3>
+
+            <p>
+                Don't like the price? Try negotiating
+                with our virtual bargaining agent.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= VEGETABLE SECTION ================= -->
+
+    <section class="vegetable-section"
+             id="vegetables">
+
+        <div class="section-title">
+
+            <span>
+                OUR FRESH COLLECTION
+            </span>
+
+            <h2>
+                Choose Your
+                <strong>Vegetables</strong>
+            </h2>
+
+            <p>
+                Pick your favorite vegetables and start shopping.
+            </p>
+
+        </div>
+
+
+        <!-- VEGETABLE GRID -->
+
+        <div class="vegetable-grid">
+
+            {% for veg_id, vegetable in vegetables.items() %}
+
+                <div class="vegetable-card">
+
+                    <!-- Vegetable Image / Emoji -->
+
+                    <div class="vegetable-image {{ vegetable.name|lower|replace(' ', '-') }}">
+
+                        {{ vegetable.emoji }}
+
+                    </div>
+
+
+                    <!-- Vegetable Name -->
+
+                    <h3>
+                        {{ vegetable.name|title }}
+                    </h3>
+
+
+                    <!-- Description -->
+
+                    <p class="description">
+
+                        Fresh and quality
+                        {{ vegetable.name|lower }}
+                        for your everyday needs.
+
+                    </p>
+
+
+                    <!-- Price -->
+
+                    <div class="price">
+
+                        ₹{{ "%.2f"|format(vegetable.price * 1000) }}
+
+                        <span>
+                            / kg
+                        </span>
+
+                    </div>
+
+
+                    <!-- Buy Button -->
+
+                    <a href="{{ url_for('purchase', veg_id=veg_id) }}"
+                       class="buy-btn">
+
+                        Buy Now 🛒
+
+                    </a> 
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about"
+             id="about">
+
+        <div class="about-content">
+
+            <span>
+                ABOUT AKHIL'S V.V.M.
+            </span>
+
+            <h2>
+                Virtual
+                <strong>Vegetable Market</strong>
+            </h2>
+
+            <p>
+                Akhil's Virtual Vegetable Market is a Flask-based
+                web application designed to provide a simple,
+                interactive vegetable shopping experience.
+            </p>
+
+            <p>
+                Customers can choose vegetables, select quantities,
+                add products to their cart, and even bargain with
+                our virtual bargaining agent Akki.
+            </p>
+
+
+            <div class="about-points">
+
+                <div>
+                    🥕 Fresh Vegetables
+                </div>
+
+                <div>
+                    ⚖️ Flexible Quantities
+                </div>
+
+                <div>
+                    🤝 Smart Bargaining
+                </div>
+
+                <div>
+                    🛒 Easy Shopping
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🥕 Akhil's Virtual Vegetable Market
+        </div>
+
+        <p>
+            Fresh vegetables. Simple shopping. Friendly bargaining.
+        </p>
+
+        <small>
+            © 2026 Akhil's V.V.M. | All Rights Reserved
+        </small>
+
+    </footer>
+
+
+</body>
+
+</html>
