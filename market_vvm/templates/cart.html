@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Akhil's V.V.M. - Cart</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f7fff4,
+                    #eefbea
+                );
+
+            color: #263326;
+
+            min-height: 100vh;
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+
+            height: 75px;
+
+            background: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            box-shadow:
+                0 3px 15px
+                rgba(0, 0, 0, 0.08);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+        }
+
+
+        .logo {
+
+            font-size: 23px;
+
+            font-weight: bold;
+
+            color: #287a32;
+
+            text-decoration: none;
+        }
+
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .home-btn {
+
+            text-decoration: none;
+
+            color: #287a32;
+
+            font-weight: 600;
+
+            padding: 10px 18px;
+
+            border-radius: 25px;
+
+            transition: 0.3s;
+        }
+
+
+        .home-btn:hover {
+
+            background: #edf9e9;
+        }
+
+
+        .cart-btn {
+
+            background: #287a32;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 11px 20px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 5px 15px
+                rgba(40, 122, 50, 0.25);
+        }
+
+
+        /* =========================================
+           MAIN CONTAINER
+        ========================================= */
+
+        .cart-container {
+
+            width: 90%;
+
+            max-width: 1100px;
+
+            margin: 50px auto;
+
+        }
+
+
+        .page-heading {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+
+        .page-heading .tag {
+
+            display: inline-block;
+
+            background: #e4f7df;
+
+            color: #287a32;
+
+            padding: 8px 18px;
+
+            border-radius: 30px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .page-heading h1 {
+
+            font-size: 42px;
+
+            color: #214d26;
+
+            margin-bottom: 8px;
+        }
+
+
+        .page-heading p {
+
+            color: #718071;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================================
+           FLASH MESSAGES
+        ========================================= */
+
+        .flash-container {
+
+            margin-bottom: 25px;
+        }
+
+
+        .flash {
+
+            padding: 14px 18px;
+
+            border-radius: 12px;
+
+            margin-bottom: 10px;
+
+            text-align: center;
+
+            font-weight: 600;
+        }
+
+
+        .flash.success {
+
+            background: #e6f8e1;
+
+            color: #27732e;
+
+            border:
+                1px solid #bce6b6;
+        }
+
+
+        .flash.error {
+
+            background: #fff0f0;
+
+            color: #b52c2c;
+
+            border:
+                1px solid #f2c2c2;
+        }
+
+
+        /* =========================================
+           CART CARD
+        ========================================= */
+
+        .cart-card {
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(0, 0, 0, 0.08);
+
+            border:
+                1px solid #e9f0e6;
+        }
+
+
+        /* =========================================
+           CART ITEM
+        ========================================= */
+
+        .cart-item {
+
+            display: grid;
+
+            grid-template-columns:
+                90px
+                1fr
+                130px
+                130px
+                90px;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 20px 5px;
+
+            border-bottom:
+                1px solid #edf1eb;
+        }
+
+
+        .cart-item:last-child {
+
+            border-bottom: none;
+        }
+
+
+        .item-emoji {
+
+            width: 75px;
+
+            height: 75px;
+
+            border-radius: 18px;
+
+            background: #f1faed;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 42px;
+        }
+
+
+        .item-info h2 {
+
+            color: #244b28;
+
+            font-size: 21px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .item-info p {
+
+            color: #7a8778;
+
+            font-size: 14px;
+        }
+
+
+        .item-price {
+
+            color: #6d796a;
+
+            font-size: 14px;
+        }
+
+
+        .item-price strong {
+
+            display: block;
+
+            color: #315d35;
+
+            font-size: 17px;
+
+            margin-top: 5px;
+        }
+
+
+        .item-total {
+
+            color: #287a32;
+
+            font-weight: bold;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================================
+           REMOVE BUTTON
+        ========================================= */
+
+        .remove-form {
+
+            display: flex;
+
+            justify-content: center;
+        }
+
+
+        .remove-btn {
+
+            border: none;
+
+            background: #fff0f0;
+
+            color: #c33a3a;
+
+            padding: 9px 12px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .remove-btn:hover {
+
+            background: #ffdede;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================
+           CART SUMMARY
+        ========================================= */
+
+        .cart-summary {
+
+            margin-top: 25px;
+
+            padding-top: 25px;
+
+            border-top:
+                2px solid #e8eee5;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .summary-left h3 {
+
+            color: #345338;
+
+            margin-bottom: 6px;
+        }
+
+
+        .summary-left p {
+
+            color: #7c887b;
+
+            font-size: 14px;
+        }
+
+
+        .summary-right {
+
+            text-align: right;
+        }
+
+
+        .total-label {
+
+            color: #7a8578;
+
+            font-size: 14px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .total-price {
+
+            color: #287a32;
+
+            font-size: 32px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================================
+           ACTION BUTTONS
+        ========================================= */
+
+        .actions {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .continue-btn {
+
+            text-decoration: none;
+
+            background: #f0f6ee;
+
+            color: #287a32;
+
+            padding: 13px 22px;
+
+            border-radius: 12px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .continue-btn:hover {
+
+            background: #e2f1de;
+        }
+
+
+        .clear-form {
+
+            display: inline;
+        }
+
+
+        .clear-btn {
+
+            border: none;
+
+            background: #fff0f0;
+
+            color: #bd3535;
+
+            padding: 13px 22px;
+
+            border-radius: 12px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .clear-btn:hover {
+
+            background: #ffdede;
+        }
+
+
+        .checkout-btn {
+
+            text-decoration: none;
+
+            background: #287a32;
+
+            color: white;
+
+            padding: 13px 25px;
+
+            border-radius: 12px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 7px 18px
+                rgba(40, 122, 50, 0.25);
+
+            transition: 0.3s;
+        }
+
+
+        .checkout-btn:hover {
+
+            background: #21672a;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================
+           EMPTY CART
+        ========================================= */
+
+        .empty-cart {
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 70px 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 35px
+                rgba(0, 0, 0, 0.07);
+        }
+
+
+        .empty-icon {
+
+            font-size: 75px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .empty-cart h2 {
+
+            color: #294e2d;
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .empty-cart p {
+
+            color: #788378;
+
+            margin-bottom: 25px;
+        }
+
+
+        .shop-btn {
+
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #287a32;
+
+            color: white;
+
+            padding: 14px 28px;
+
+            border-radius: 12px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .shop-btn:hover {
+
+            background: #21672a;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 35px 20px;
+
+            color: #849083;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 850px) {
+
+            .navbar {
+
+                padding: 0 5%;
+            }
+
+
+            .cart-item {
+
+                grid-template-columns:
+                    70px
+                    1fr;
+
+                gap: 15px;
+            }
+
+
+            .item-emoji {
+
+                width: 65px;
+
+                height: 65px;
+
+                font-size: 34px;
+            }
+
+
+            .item-price,
+            .item-total,
+            .remove-form {
+
+                grid-column: 2;
+            }
+
+
+            .remove-form {
+
+                justify-content: flex-start;
+            }
+
+
+            .cart-summary {
+
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+
+            .summary-right {
+
+                text-align: left;
+            }
+
+
+            .actions {
+
+                justify-content: flex-start;
+            }
+
+
+            .page-heading h1 {
+
+                font-size: 34px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .logo {
+
+                font-size: 18px;
+            }
+
+
+            .home-btn {
+
+                display: none;
+            }
+
+
+            .cart-btn {
+
+                padding: 9px 15px;
+
+                font-size: 14px;
+            }
+
+
+            .cart-container {
+
+                width: 94%;
+
+                margin-top: 30px;
+            }
+
+
+            .cart-card {
+
+                padding: 15px;
+            }
+
+
+            .page-heading h1 {
+
+                font-size: 30px;
+            }
+
+
+            .total-price {
+
+                font-size: 27px;
+            }
+
+
+            .actions {
+
+                flex-direction: column;
+
+                width: 100%;
+            }
+
+
+            .continue-btn,
+            .checkout-btn,
+            .clear-btn {
+
+                width: 100%;
+
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         NAVBAR
+    ================================================== -->
+
+    <nav class="navbar">
+
+        <a
+            href="{{ url_for('index') }}"
+            class="logo"
+        >
+            🥕 Akhil's V.V.M.
+        </a>
+
+
+        <div class="nav-right">
+
+            <a
+                href="{{ url_for('index') }}"
+                class="home-btn"
+            >
+                Home
+            </a>
+
+
+            <a
+                href="{{ url_for('cart') }}"
+                class="cart-btn"
+            >
+                🛒 Cart
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ==================================================
+         MAIN
+    ================================================== -->
+
+    <main class="cart-container">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="page-heading">
+
+            <span class="tag">
+                🛒 YOUR SHOPPING CART
+            </span>
+
+
+            <h1>
+                Your Fresh Picks
+            </h1>
+
+
+            <p>
+                Review your vegetables before checkout.
+            </p>
+
+        </div>
+
+
+        <!-- ==================================================
+             FLASH MESSAGES
+        ================================================== -->
+
+        <div class="flash-container">
+
+            {% with messages = get_flashed_messages(
+                with_categories=true
+            ) %}
+
+                {% if messages %}
+
+                    {% for category, message in messages %}
+
+                        <div
+                            class="flash {{ category }}"
+                        >
+                            {{ message }}
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+        </div>
+
+
+        <!-- ==================================================
+             CHECK CART
+        ================================================== -->
+
+        {% if cart %}
+
+
+            <div class="cart-card">
+
+
+                <!-- ==========================================
+                     CART ITEMS
+                =========================================== -->
+
+                {% for item in cart %}
+
+                    <div class="cart-item">
+
+
+                        <!-- EMOJI -->
+
+                        <div class="item-emoji">
+
+                            {{ item.emoji }}
+
+                        </div>
+
+
+                        <!-- ITEM INFORMATION -->
+
+                        <div class="item-info">
+
+                            <h2>
+                                {{ item.name|title }}
+                            </h2>
+
+
+                            <p>
+                                Fresh quality
+                                {{ item.name }}
+                            </p>
+
+                        </div>
+
+
+                        <!-- PRICE -->
+
+                        <div class="item-price">
+
+                            Price / kg
+
+                            <strong>
+                                ₹{{ "%.0f"|format(
+                                    item.price * 1000
+                                ) }}
+                            </strong>
+
+                        </div>
+
+
+                        <!-- TOTAL -->
+
+                        <div class="item-total">
+
+                            ₹{{ "%.2f"|format(
+                                item.total
+                            ) }}
+
+                            <div
+                                style="
+                                    font-size: 13px;
+                                    color: #7d887b;
+                                    font-weight: normal;
+                                    margin-top: 5px;
+                                "
+                            >
+                                {{ item.quantity }} g
+                            </div>
+
+                        </div>
+
+
+                        <!-- REMOVE -->
+
+                        <form
+                            method="POST"
+                            action="{{
+                                url_for(
+                                    'remove_from_cart',
+                                    index=loop.index0
+                                )
+                            }}"
+                            class="remove-form"
+                        >
+
+                            <button
+                                type="submit"
+                                class="remove-btn"
+                            >
+                                🗑️ Remove
+                            </button>
+
+                        </form>
+
+
+                    </div>
+
+                {% endfor %}
+
+
+                <!-- ==========================================
+                     CART SUMMARY
+                =========================================== -->
+
+                <div class="cart-summary">
+
+
+                    <div class="summary-left">
+
+                        <h3>
+                            Order Summary
+                        </h3>
+
+
+                        <p>
+                            {{ cart|length }}
+                            item{% if cart|length != 1 %}s{% endif %}
+                            in your cart
+                        </p>
+
+                    </div>
+
+
+                    <div class="summary-right">
+
+                        <div class="total-label">
+                            Cart Total
+                        </div>
+
+
+                        <div class="total-price">
+
+                            ₹{{ "%.2f"|format(
+                                cart_total
+                            ) }}
+
+                        </div>
+
+
+                        <!-- ACTIONS -->
+
+                        <div class="actions">
+
+
+                            <a
+                                href="{{ url_for('index') }}"
+                                class="continue-btn"
+                            >
+                                ← Continue Shopping
+                            </a>
+
+
+                            <form
+                                method="POST"
+                                action="{{
+                                    url_for('clear_cart')
+                                }}"
+                                class="clear-form"
+                            >
+
+                                <button
+                                    type="submit"
+                                    class="clear-btn"
+                                    onclick="
+                                        return confirm(
+                                            'Are you sure you want to clear your cart?'
+                                        );
+                                    "
+                                >
+                                    Clear Cart
+                                </button>
+
+                            </form>
+
+
+                            <a
+                                href="{{ url_for('checkout') }}"
+                                class="checkout-btn"
+                            >
+                                Proceed to Checkout →
+                            </a>
+                             
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        {% else %}
+
+
+            <!-- ==================================================
+                 EMPTY CART
+            ================================================== -->
+
+            <div class="empty-cart">
+
+
+                <div class="empty-icon">
+                    🛒
+                </div>
+
+
+                <h2>
+                    Your cart is empty
+                </h2>
+
+
+                <p>
+                    You haven't added any vegetables yet.
+                    Let's get some fresh vegetables!
+                </p>
+
+
+                <a
+                    href="{{ url_for('index') }}"
+                    class="shop-btn"
+                >
+                    🥕 Start Shopping
+                </a>
+
+
+            </div>
+
+
+        {% endif %}
+
+
+    </main>
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+
+    <footer>
+
+        © 2026 Akhil's Virtual Vegetable Market
+
+        <br>
+
+        Fresh vegetables • Smart bargaining • Easy shopping 🥕
+
+
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Billing | Akhil's V.V.M.</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .billing-page {
+            min-height: 80vh;
+            padding: 50px 20px;
+            background: #f5fff7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .billing-card {
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            padding: 40px;
+            border-radius: 22px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.10);
+        }
+
+        .success-icon {
+            text-align: center;
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        .billing-card h1 {
+            text-align: center;
+            color: #1b5e20;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .bill-box {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .bill-header {
+            background: #2e7d32;
+            color: white;
+            padding: 18px 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .bill-details {
+            padding: 20px;
+        }
+
+        .bill-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 13px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .bill-row:last-child {
+            border-bottom: none;
+        }
+
+        .bill-label {
+            color: #555;
+        }
+
+        .bill-value {
+            color: #222;
+            font-weight: bold;
+        }
+
+        .final-price {
+            background: #e8f5e9;
+            padding: 22px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .final-price p {
+            margin: 0 0 8px;
+            color: #555;
+        }
+
+        .price {
+            font-size: 34px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .bargain-badge {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 12px;
+            background: #fff3e0;
+            color: #e65100;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .success-message {
+            text-align: center;
+            background: #f1f8e9;
+            padding: 18px;
+            border-radius: 12px;
+            color: #33691e;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .new-purchase-btn {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .new-purchase-btn:hover {
+            background: #1b5e20;
+            transform: translateY(-2px);
+        }
+
+        .home-btn {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #555;
+            text-decoration: none;
+        }
+
+        .home-btn:hover {
+            color: #1b5e20;
+        }
+
+        @media (max-width: 600px) {
+
+            .billing-card {
+                padding: 25px 18px;
+            }
+
+            .success-icon {
+                font-size: 55px;
+            }
+
+            .bill-row {
+                font-size: 14px;
+            }
+
+            .price {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="{{ url_for('index') }}" class="logo">
+                🥕 Akhil's V.V.M.
+            </a>
+
+            <div class="nav-links">
+
+                <a href="{{ url_for('index') }}">
+                    Home
+                </a>
+
+                <a href="{{ url_for('index') }}#vegetables">
+                    Vegetables
+                </a>
+
+                <a href="{{ url_for('index') }}#about">
+                    About
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Billing Section -->
+    <section class="billing-page">
+
+        <div class="billing-card">
+
+            <!-- Success -->
+            <div class="success-icon">
+                ✅
+            </div>
+
+            <h1>
+                Billing Successful
+            </h1>
+
+            <p class="subtitle">
+                Thank you for shopping at Akhil's Virtual Vegetable Market!
+            </p>
+
+
+            <!-- Bill -->
+            <div class="bill-box">
+
+    <div class="bill-header">
+        🧾 Purchase Receipt
+    </div>
+
+    <div class="bill-details">
+
+        {% for item in cart %}
+
+            <div class="bill-row">
+
+                <span class="bill-label">
+
+                    {{ item.emoji }}
+                    {{ item.name|title }}
+
+                </span>
+
+                <span class="bill-value">
+
+                    {{ item.quantity }} g
+
+                </span>
+
+            </div>
+
+            <div class="bill-row">
+
+                <span class="bill-label">
+
+                    Price
+
+                </span>
+
+                <span class="bill-value">
+
+                    ₹{{ "%.2f"|format(item.total) }}
+
+                </span>
+
+            </div>
+
+        {% endfor %}
+
+
+        <div class="bill-row">
+
+            <span class="bill-label">
+
+                Billing Type
+
+            </span>
+
+            <span class="bill-value">
+
+                {% if bargained %}
+                    🤝 Bargained Price
+                {% else %}
+                    💳 Regular Price
+                {% endif %}
+
+            </span>
+
+        </div>
+
+
+        <div class="bill-row">
+
+            <span class="bill-label">
+
+                Payment Method
+
+            </span>
+
+            <span class="bill-value">
+
+                💰 Cash on Delivery
+
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+            <!-- Final Price -->
+            <div class="final-price">
+
+    <p>
+        💰 Final Amount
+    </p>
+
+    <div class="price">
+
+        ₹{{ "%.2f"|format(cart_total) }}
+
+    </div>
+
+    {% if bargained %}
+
+        <span class="bargain-badge">
+
+            🎉 Bargaining Discount Applied
+
+        </span>
+
+    {% endif %}
+
+</div>
+
+
+            <!-- Success Message -->
+            <div class="success-message">
+
+                🎉 <strong>Thank you for your purchase!</strong>
+                <br>
+
+                Your order has been successfully processed.
+                <br>
+
+                Please collect your vegetables from the market.
+
+            </div>
+
+
+            <!-- New Purchase -->
+            <a href="{{ url_for('new_purchase') }}"
+               class="new-purchase-btn">
+
+                🛒 Make Another Purchase
+
+            </a>
+
+
+            <!-- Home -->
+            <a href="{{ url_for('index') }}"
+               class="home-btn">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <p>
+            © 2026 Akhil's Virtual Vegetable Market.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
