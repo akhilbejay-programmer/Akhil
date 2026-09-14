@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home | Akhil's Monthly Budget Planner
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="hero-tag">
+            AKHIL BEJAY POWERED
+        </p>
+
+        <h1>
+            Monthly
+            <span>Budget Planner</span>
+        </h1>
+
+        <p class="hero-description">
+
+            Plan your monthly expenses intelligently
+            using Agent Akki.
+
+            Get a personalized budget plan based on
+            your monthly income.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{{ url_for('planner') }}"
+               class="btn primary-btn">
+
+                Make my plan 💰
+
+            </a>
+
+            <a href="{{ url_for('history') }}"
+               class="btn secondary-btn">
+
+                View History 📜
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="card-icon">
+            📊
+        </div>
+
+        <h2>
+            Smart Budget
+        </h2>
+
+        <p>
+            Let Me help you to
+            organize your monthly expenses.
+        </p>
+
+        <div class="mini-stat">
+
+            <span>
+                🤖 Agent Akki
+            </span>
+
+            <strong>
+                Activated
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+    <h2>
+        Why Use Our Budget Planner?
+    </h2>
+
+    <p class="section-description">
+        Simple, smart and practical monthly
+        budget planning.
+    </p>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                💰
+            </div>
+
+            <h3>
+                Savings Planning
+            </h3>
+
+            <p>
+                Keep track of your predicted savings
+                and monthly expenses.
+            </p>
+
+        </div>
+        
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📊
+            </div>
+
+            <h3>
+                Smart Analysis
+            </h3>
+
+            <p>
+                Understand how your income can be
+                distributed across expenses.
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🤖
+            </div>
+
+            <h3>
+                Agent Akki
+            </h3>
+
+            <p>
+                Use Me to predict
+                your monthly budget categories.
+            </p>
+
+        </div>        
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="how-it-works">
+
+    <h2>
+        How It Works
+    </h2>
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>
+                Enter Details
+            </h3>
+
+            <p>
+                Enter your name and monthly income.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>
+                Agent Prediction
+            </h3>
+
+            <p>
+                Our Agent analyzes your income.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Get Your Plan
+            </h3>
+
+            <p>
+                View your personalized budget.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+{% endblock %}

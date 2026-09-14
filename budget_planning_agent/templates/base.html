@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Akhil's Monthly Budget Planner
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            💰 Budget Planner
+        </div>
+
+        <nav>
+
+            <a href="{{ url_for('index') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('planner') }}">
+                Budget Planner
+            </a>
+
+            <a href="{{ url_for('analysis') }}">
+                Analysis
+            </a>
+
+            <a href="{{ url_for('history') }}">
+                History
+            </a>
+
+            <a href="{{ url_for('about') }}">
+                About
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= FLASH MESSAGES ================= -->
+
+    <div class="flash-container">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                {% for category, message in messages %}
+
+                    <div class="flash {{ category }}">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+    </div>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Akhil's Monthly Budget Planner
+        </p>
+
+        <p>
+            Agent Akki Powered Budget Planning
+        </p>
+
+    </footer>
+
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>

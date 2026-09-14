@@ -1,0 +1,444 @@
+{% extends "base.html" %}
+
+{% block title %}
+Analysis | Akhil's Monthly Budget Planner
+{% endblock %}
+
+
+{% block content %}
+
+<section class="analysis-page">
+
+
+    <div class="page-header">
+
+        <p class="hero-tag">
+            📊 BUDGET ANALYSIS
+        </p>
+
+        <h1>
+            Monthly Budget Analysis
+        </h1>
+
+        <p>
+            Understand your predicted monthly
+            income distribution.
+        </p>
+
+    </div>
+
+
+    {% if budget %}
+
+
+    <!-- ================= SUMMARY ================= -->
+
+    <div class="summary-grid">
+
+
+        <div class="summary-card">
+
+            <span>
+                💵 Monthly Income
+            </span>
+
+            <strong>
+                ₹{{ "{:,.2f}".format(income) }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <span>
+                💰 Savings
+            </span>
+
+            <strong>
+                ₹{{ "{:,.2f}".format(budget.savings) }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <span>
+                📊 Categories
+            </span>
+
+            <strong>
+                9
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ================= CHART ================= -->
+
+    <div class="analysis-chart-card">
+
+        <h2>
+            Budget Distribution
+        </h2>
+
+        <div class="chart-container">
+
+            <canvas id="budgetChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TABLE ================= -->
+
+    <div class="analysis-table-card">
+
+        <h2>
+            Detailed Breakdown
+        </h2>
+
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Category
+                    </th>
+
+                    <th>
+                        Amount
+                    </th>
+
+                    <th>
+                        Individual Planning
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                <tr>
+
+                    <td>🏠 House Rent</td>
+
+                    <td>
+                        ₹{{ "{:,.2f}".format(budget.house_rent) }}
+                    </td>
+
+                    <td>
+                        <div class="hero-buttons">
+                        <a href=""
+                           class="btn primary-btn">
+
+                            Make my House Rent plan 💰
+
+                        </a>
+                        </div>
+                            </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>💳 EMI</td>
+
+                    <td>
+                        ₹{{ "{:,.2f}".format(budget.emi) }}
+                    </td>
+
+                    <td>
+                        <div class="hero-buttons">
+                        <a href=""
+                           class="btn primary-btn">
+
+                            Make my EMI 💰
+
+                        </a>
+                        </div>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>🛒 Food & Grocery</td>
+
+                    <td>
+                        ₹{{ "{:,.2f}".format(budget.food_grocery) }}
+                    </td>
+
+                    <td>
+                        <div class="hero-buttons">
+                        <a href=""
+                           class="btn primary-btn">
+
+                            Make my Food & Grocery plan 💰
+
+                        </a>
+                        </div>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>🚗 Transportation</td>
+
+                    <td>
+                        ₹{{ "{:,.2f}".format(budget.transportation) }}
+                    </td>
+
+                    <td>
+                        <div class="hero-buttons">
+                        <a href=""
+                           class="btn primary-btn">
+
+                            Make my Transportation plan 💰
+
+                        </a>
+                        </div>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>🛍️ Shopping</td>
+
+                    <td>
+                        ₹{{ "{:,.2f}".format(budget.shopping) }}
+                    </td>
+
+                    <td>
+                        <div class="hero-buttons">
+                        <a href=""
+                           class="btn primary-btn">
+
+                            Make my Shopping plan 💰
+
+                        </a>
+                        </div>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>🎬 Entertainment</td>
+
+                    <td>
+                        ₹{{ "{:,.2f}".format(budget.entertainment) }}
+                    </td>
+
+                    <td>
+                        <div class="hero-buttons">
+                        <a href=""
+                           class="btn primary-btn">
+
+                            Make my Entertainment plan 💰
+
+                        </a>
+                        </div>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>🏥 Healthcare</td>
+
+                    <td>
+                        ₹{{ "{:,.2f}".format(budget.healthcare) }}
+                    </td>
+
+                    <td>
+                        <div class="hero-buttons">
+                        <a href=""
+                           class="btn primary-btn">
+
+                            Make my Healthcare plan 💰
+
+                        </a>
+                        </div>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>💰 Savings</td>
+
+                    <td>
+                        ₹{{ "{:,.2f}".format(budget.savings) }}
+                    </td>
+
+                    <td>
+                        <div class="hero-buttons">
+                        <a href=""
+                           class="btn primary-btn">
+
+                            Make my Savings plan 💰
+
+                        </a>
+                        </div>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>📦 Other Expenses</td>
+
+                    <td>
+                        ₹{{ "{:,.2f}".format(budget.other_expenses) }}
+                    </td>
+
+                    <td>
+                        <div class="hero-buttons">
+                        <a href=""
+                           class="btn primary-btn">
+
+                            Make my Other Expenses plan 💰
+
+                        </a>
+                        </div>
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    {% else %}
+
+    <div class="empty-state">
+
+        <div>
+            📊
+        </div>
+
+        <h2>
+            No Budget Available
+        </h2>
+
+        <p>
+            Create a budget plan first to see
+            your analysis.
+        </p>
+
+        <a href="{{ url_for('planner') }}"
+           class="btn primary-btn">
+
+            Start Planning
+
+        </a>
+
+    </div>
+
+    {% endif %}
+
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+{% if budget %}
+
+<script>
+
+const ctx =
+    document.getElementById("budgetChart");
+
+
+new Chart(ctx, {
+
+    type: "doughnut",
+
+    data: {
+
+        labels: [
+
+            "House Rent",
+            "EMI",
+            "Food & Grocery",
+            "Transportation",
+            "Shopping",
+            "Entertainment",
+            "Healthcare",
+            "Savings",
+            "Other Expenses"
+
+        ],
+
+        datasets: [{
+
+            data: [
+
+                {{ budget.house_rent }},
+                {{ budget.emi }},
+                {{ budget.food_grocery }},
+                {{ budget.transportation }},
+                {{ budget.shopping }},
+                {{ budget.entertainment }},
+                {{ budget.healthcare }},
+                {{ budget.savings }},
+                {{ budget.other_expenses }}
+
+            ]
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        plugins: {
+
+            legend: {
+
+                position: "bottom"
+
+            }
+
+        }
+
+    }
+
+});
+
+</script>
+
+{% endif %}
+
+{% endblock %}

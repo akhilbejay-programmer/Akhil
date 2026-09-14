@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}
+Budget Planner | Akhil's Monthly Budget Planner
+{% endblock %}
+
+
+{% block content %}
+
+<section class="planner-page">
+
+    <div class="planner-container">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="planner-info">
+
+            <p class="hero-tag">
+                🤖 BUDGET PLANNER
+            </p>
+
+            <h1>
+                Plan Your
+                <span>Monthly Budget</span>
+            </h1>
+
+            <p>
+                Enter your basic details and let our
+                Agent generate a
+                personalized monthly budget plan.
+            </p>
+
+
+            <div class="info-list">
+
+                <div>
+                    <span>✓</span>
+                    Agent prediction
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Multiple expense categories
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Savings estimation
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Budget analysis
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="planner-form-card">
+
+            <h2>
+                Make my Budget
+            </h2>
+
+            <p>
+                Enter your details below.
+            </p>
+
+
+            <form action="{{ url_for('planner') }}"
+                  method="POST">
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Your Name
+                    </label>
+
+                    <input
+        type="text"
+        id="name"
+        name="name"
+        pattern="[A-Za-z ]+"
+        title="Name should contain only alphabets and spaces"
+        placeholder="Enter your name"
+        value="{{ name if name else '' }}"
+        oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '')"
+        required
+    >
+
+                </div>
+
+
+                <!-- INCOME -->
+
+                <div class="form-group">
+
+                    <label for="income">
+                        Monthly Income
+                    </label>
+
+                    <div class="income-input">
+
+                        <span>
+                            ₹
+                        </span>
+
+                        <input
+                            type="number"
+                            id="income"
+                            name="income"
+                            placeholder="Enter monthly income"
+                            min="1"
+                            step="0.01"
+                            value="{{ income if income else '' }}"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="btn primary-btn full-btn">
+
+                    Generate My Budget 🤖
+
+                </button>
+
+
+            </form>
+
+
+            <div class="form-note">
+
+                🔒 Your information is used only
+                for budget calculation.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

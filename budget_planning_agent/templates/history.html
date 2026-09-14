@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}
+History | Akhil's Monthly Budget Planner
+{% endblock %}
+
+
+{% block content %}
+
+<section class="history-page">
+
+
+    <div class="page-header">
+
+        <p class="hero-tag">
+            📜 BUDGET HISTORY
+        </p>
+
+        <h1>
+            Your Budget History
+        </h1>
+
+        <p>
+            View your previous budget plans.<br><b>Agent Akki wish your Next Month Income will be Increase.</b>
+        </p>
+
+    </div>
+
+
+    {% if history %}
+
+
+    <div class="history-table-container">
+
+        <table class="history-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        S.no
+                    </th>
+
+                    <th>
+                        Name
+                    </th>
+
+                    <th>
+                        Income
+                    </th>
+
+                    <th>
+                        Savings
+                    </th>
+
+                    <th>
+                        Date
+                    </th>
+
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for item in history %}
+
+                <tr>
+
+                    <td>
+                        {{ loop.index }}
+                    </td>
+
+                    <td>
+                        {{ item.name }}
+                    </td>
+
+                    <td>
+                        ₹{{ "{:,.2f}".format(item.income) }}
+                    </td>
+
+                    <td>
+                        ₹{{ "{:,.2f}".format(item.savings) }}
+                    </td>
+
+                    <td>
+                        {{ item.created_at }}
+                    </td>
+
+                    <td>
+
+                        <a href="{{ url_for('history_result', history_id=item.id) }}"
+   class="small-btn">
+    View
+</a>
+<form action="{{ url_for('delete_history', history_id=item.id) }}"
+      method="POST"
+      style="display:inline;">
+
+    <button type="submit"
+            class="small-btn"
+            onclick="return confirm('Delete this budget record?');">
+
+        Delete
+
+    </button>
+
+</form>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    {% else %}
+
+
+    <div class="empty-state">
+
+        <div>
+            📜
+        </div>
+
+        <h2>
+            No History Yet
+        </h2>
+
+        <p>
+            You haven't generated any budget plans yet.
+        </p>
+
+        <a href="{{ url_for('planner') }}"
+           class="btn primary-btn">
+
+            Create Your First Plan
+
+        </a>
+
+    </div>
+
+
+    {% endif %}
+
+
+</section>
+
+{% endblock %}

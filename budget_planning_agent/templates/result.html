@@ -1,0 +1,289 @@
+{% extends "base.html" %}
+
+{% block title %}
+Budget Result | Akhil's Monthly Budget Planner
+{% endblock %}
+
+
+{% block content %}
+
+<section class="result-page">
+
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="result-header">
+
+        <p class="hero-tag">
+            🤖 AGENT PREDICTION COMPLETE
+        </p>
+
+        <h1>
+            Your Monthly Budget Plan
+        </h1>
+
+        <p>
+            Hello <strong>{{ name }}</strong> 👋
+        </p>
+
+        <div class="income-display">
+
+            Monthly Income:
+
+            <strong>
+                ₹{{ "{:,.2f}".format(income) }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= BUDGET CARDS ================= -->
+
+    <div class="budget-grid">
+
+
+        <!-- HOUSE RENT -->
+
+        <div class="budget-card">
+
+            <div class="budget-icon">
+                🏠
+            </div>
+
+            <div>
+
+                <h3>
+                    House Rent
+                </h3>
+
+                <p>
+                    ₹{{ "{:,.2f}".format(budget.house_rent) }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMI -->
+
+        <div class="budget-card">
+
+            <div class="budget-icon">
+                💳
+            </div>
+
+            <div>
+
+                <h3>
+                    EMI
+                </h3>
+
+                <p>
+                    ₹{{ "{:,.2f}".format(budget.emi) }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOD -->
+
+        <div class="budget-card">
+
+            <div class="budget-icon">
+                🛒
+            </div>
+
+            <div>
+
+                <h3>
+                    Food & Grocery
+                </h3>
+
+                <p>
+                    ₹{{ "{:,.2f}".format(budget.food_grocery) }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- TRANSPORTATION -->
+
+        <div class="budget-card">
+
+            <div class="budget-icon">
+                🚗
+            </div>
+
+            <div>
+
+                <h3>
+                    Transportation
+                </h3>
+
+                <p>
+                    ₹{{ "{:,.2f}".format(budget.transportation) }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SHOPPING -->
+
+        <div class="budget-card">
+
+            <div class="budget-icon">
+                🛍️
+            </div>
+
+            <div>
+
+                <h3>
+                    Shopping
+                </h3>
+
+                <p>
+                    ₹{{ "{:,.2f}".format(budget.shopping) }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ENTERTAINMENT -->
+
+        <div class="budget-card">
+
+            <div class="budget-icon">
+                🎬
+            </div>
+
+            <div>
+
+                <h3>
+                    Entertainment
+                </h3>
+
+                <p>
+                    ₹{{ "{:,.2f}".format(budget.entertainment) }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- HEALTHCARE -->
+
+        <div class="budget-card">
+
+            <div class="budget-icon">
+                🏥
+            </div>
+
+            <div>
+
+                <h3>
+                    Healthcare
+                </h3>
+
+                <p>
+                    ₹{{ "{:,.2f}".format(budget.healthcare) }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAVINGS -->
+
+        <div class="budget-card savings-card">
+
+            <div class="budget-icon">
+                💰
+            </div>
+
+            <div>
+
+                <h3>
+                    Savings
+                </h3>
+
+                <p>
+                    ₹{{ "{:,.2f}".format(budget.savings) }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- OTHER -->
+
+        <div class="budget-card">
+
+            <div class="budget-icon">
+                📦
+            </div>
+
+            <div>
+
+                <h3>
+                    Other Expenses
+                </h3>
+
+                <p>
+                    ₹{{ "{:,.2f}".format(budget.other_expenses) }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ================= ACTION BUTTONS ================= -->
+
+    <div class="result-actions">
+
+        <a href="{{ url_for('planner') }}"
+           class="btn primary-btn">
+
+            🔄 Back to home
+
+        </a>
+
+
+        <a href="{{ url_for('analysis') }}"
+           class="btn secondary-btn">
+
+            📊 View Analysis
+
+        </a>
+
+
+        <a href="{{ url_for('history') }}"
+           class="btn secondary-btn">
+
+            📜 View History
+
+        </a>
+
+    </div>
+
+
+</section>
+
+{% endblock %}
