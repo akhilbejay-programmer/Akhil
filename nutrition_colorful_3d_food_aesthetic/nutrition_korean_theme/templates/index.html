@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Nutrition for Good Health | Home
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+            CSP • COMMUNITY SERVICE PROJECT
+        </span>
+
+
+        <h1>
+
+            Healthy Habits.
+
+            <br>
+
+            <span>Healthy Future.</span>
+
+        </h1>
+
+
+        <p>
+
+            A simple Community Service Project website
+            presenting an eight-week journey focused on
+            nutrition, hydration, physical activity,
+            food hygiene and healthy lifestyle awareness.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="{{ url_for('journey') }}"
+                class="btn primary"
+            >
+                Explore 8 Weeks →
+            </a>
+
+
+            <a
+                href="{{ url_for('tips') }}"
+                class="btn light"
+            >
+                Health Awareness
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="plate">
+            🌾
+        </div>
+
+
+        <h2>
+            Healthy Living
+        </h2>
+
+
+        <p>
+            Nutrition • Water • Activity • Hygiene
+        </p>
+
+
+        <div class="chips">
+
+            <span>
+                💧 Hydration
+            </span>
+
+            <span>
+                🥕 Nutrition
+            </span>
+
+            <span>
+                🏃 Activity
+            </span>
+
+            <span>
+                🧼 Hygiene
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="section">
+
+    <div class="section-intro-wrap">
+    <span class="eyebrow">
+        8 WEEK CSP JOURNEY
+    </span>
+
+
+    <h2>
+        From awareness to healthy habits.
+    </h2>
+
+
+    <p class="section-intro">
+
+        This project presents the journey week by week,
+        showing the main topic, activities, learning
+        and health-awareness message for each week.
+
+    </p>
+    </div>
+
+    <div class="feature-grid">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📅
+            </div>
+
+            <h3>
+                8 Weeks
+            </h3>
+
+            <p>
+                A clear week-by-week representation
+                of the CSP journey.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🥗
+            </div>
+
+            <h3>
+                Nutrition
+            </h3>
+
+            <p>
+                Awareness about balanced and
+                varied food choices.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                💧
+            </div>
+
+            <h3>
+                Hydration
+            </h3>
+
+            <p>
+                Awareness about the importance
+                of maintaining hydration.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🏃
+            </div>
+
+            <h3>
+                Activity
+            </h3>
+
+            <p>
+                Encouraging regular movement
+                and active lifestyles.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="project-banner">
+
+    <div class="basket">🧺🥬🍎</div>
+
+    <div>
+
+        <span class="badge green">
+            PROJECT FOCUS
+        </span>
+
+
+        <h2>
+            8-Weeks Journey of CSP
+        </h2>
+
+
+        <p>
+            The goal of this CSP project is to present
+            simple and practical health-awareness messages
+            that can be understood by the community.
+        </p>
+
+    </div>
+
+
+    <a
+        href="{{ url_for('journey') }}"
+        class="btn"
+    >
+        View Journey
+    </a>
+
+</section>
+
+
+{% endblock %}

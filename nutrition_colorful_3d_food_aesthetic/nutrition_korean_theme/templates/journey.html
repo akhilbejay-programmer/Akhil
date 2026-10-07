@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+8 Weeks Journey | NutriCare
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="journey-hero">
+
+    <span class="badge">
+        CSP • 8 WEEK JOURNEY
+    </span>
+
+
+    <h1>
+        Our 8 Weeks CSP<br>(Community Service Project) Journey
+    </h1>
+
+
+    <p>
+        A week-by-week presentation of the topics,
+        activities, learning and awareness created
+        during the C S P.
+    </p>
+
+</section>
+
+
+
+<section class="timeline">
+
+
+    {% for week in weeks %}
+
+    <article class="week-card">
+
+
+        <div class="week-number">
+
+            <span>
+                WEEK
+            </span>
+
+            <strong>
+                {{ week.week }}
+            </strong>
+
+        </div>
+
+
+        <div class="week-content">
+
+
+            <div class="week-top">
+
+                <div>
+
+                    <span class="week-theme">
+                        {{ week.theme }}
+                    </span>
+
+
+                    <h2>
+
+                        {{ week.icon }}
+
+                        {{ week.title }}
+
+                    </h2>
+
+                </div>
+
+
+                <div class="week-badge">
+                    Week {{ week.week }}
+                </div>
+
+            </div>
+
+
+            <p class="week-description">
+                {{ week.description }}
+            </p>
+
+
+            <div class="week-details">
+
+
+                <div class="journey-box">
+
+                    <h3>
+                        📌 Activities
+                    </h3>
+
+
+                    <ul>
+
+                        {% for activity in week.activities %}
+
+                        <li>
+                            {{ activity }}
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="journey-box">
+
+                    <h3>
+                        💡 What We Learned
+                    </h3>
+
+
+                    <p>
+                        {{ week.learning }}
+                    </p>
+
+                </div>
+
+
+
+                <div class="journey-box awareness-box">
+
+                    <h3>
+                        ❤️ Awareness Message
+                    </h3>
+
+
+                    <p>
+                        {{ week.awareness }}
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </article>
+
+    {% endfor %}
+
+
+</section>
+
+
+
+<section class="journey-ending">
+
+    <span class="badge green">
+        8 WEEKS COMPLETED
+    </span>
+
+
+    <h2>
+        The journey continues beyond the project.
+    </h2>
+
+
+    <p>
+        The purpose of health awareness is not limited
+        to eight weeks. The knowledge and healthy habits
+        developed during the project can continue in
+        everyday life.
+    </p>
+
+
+    <a
+        href="{{ url_for('tips') }}"
+        class="btn primary"
+    >
+        View Health Awareness →
+    </a>
+
+</section>
+
+
+{% endblock %}
