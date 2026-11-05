@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriCare — Community Service Project | Nellore, AP</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="min-h-screen bg-black text-white selection:bg-orange-500 selection:text-white flex flex-col justify-between relative overflow-x-hidden">
+
+  <!-- Background Ambience Video with Dark Tint -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <video
+      id="bgVideo"
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4"
+      muted
+      autoplay
+      loop
+      playsinline
+      class="w-full h-full object-cover translate-y-[10%] scale-105 pointer-events-none"
+    ></video>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/95 pointer-events-none"></div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="relative z-20 px-6 py-6 w-full">
+    <nav class="liquid-glass rounded-full px-6 py-3 flex items-center justify-between max-w-5xl mx-auto shadow-2xl">
+      <div class="flex items-center gap-8">
+        <a href="#" class="flex items-center gap-2 group text-white">
+          <i data-lucide="globe" class="w-6 h-6 text-orange-400 group-hover:rotate-45 transition-transform duration-500"></i>
+          <span class="font-semibold text-lg tracking-tight">NutriCare</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="#timelineSection" class="text-white/80 hover:text-white transition-colors">8-Week Timeline</a>
+          <button onclick="openModal('teamModal')" class="text-white/80 hover:text-white transition-colors">Student Cohort</button>
+          <button onclick="openModal('manifestoModal')" class="text-white/80 hover:text-white transition-colors">About NutriCare</button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button onclick="window.open('https://www.svcn.ac.in/', '_blank')" class="liquid-glass rounded-full px-4 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all hover:scale-105 active:scale-95 shadow-lg">
+          Batch-05
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="relative z-10 flex flex-col items-center justify-center px-6 py-12 text-center">
+    <div class="mb-4 inline-flex items-center gap-2 liquid-glass rounded-full px-4 py-1.5 text-xs font-mono uppercase tracking-widest text-orange-400">
+      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+      <span>Community Service Project<br>Sree Venkateswara College of Engineering<br>Department of Artificial Intelligence & Data Science</span>
+    </div>
+
+    <h1 style="font-family: 'Instrument Serif', serif;" class="text-5xl md:text-7xl lg:text-8xl text-white mb-6 tracking-tight drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]">
+      Good Nutrition for Good Health
+    </h1>
+
+    <p class="max-w-2xl text-white/80 text-sm md:text-base leading-relaxed mb-8 drop-shadow">
+      Creating awareness about balanced diets, biometric BMI evaluations, and wholesome lifestyle nutrition across rural communities and government schools.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="flex items-center justify-center gap-4 pt-2">
+      <a href="#timelineSection" class="liquid-glass rounded-full px-6 py-3 text-white text-sm font-medium hover:bg-white/10 transition-all hover:scale-105 active:scale-95 shadow-lg">
+        8-Week Journey
+      </a>
+      <button onclick="openModal('manifestoModal')" class="liquid-glass rounded-full px-6 py-3 text-white text-sm font-medium hover:bg-white/10 transition-all hover:scale-105 active:scale-95 shadow-lg text-orange-400">
+        Read Manifesto
+      </button>
+    </div>
+  </main>
+
+  <!-- 8-Week Timeline Section at Bottom of Page -->
+  <section id="timelineSection" class="relative z-10 w-full max-w-6xl mx-auto px-6 py-12">
+    <!-- Section Header -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 liquid-glass rounded-full px-4 py-1.5 text-xs font-mono uppercase tracking-widest text-orange-400 mb-3">
+        <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+        <span>Project Roadmap</span>
+      </div>
+      <h2 style="font-family: 'Instrument Serif', serif;" class="text-3xl md:text-5xl text-white tracking-tight">
+        8-Week Community Journey
+      </h2>
+      <p class="text-white/60 text-xs md:text-sm mt-2 max-w-xl mx-auto">
+        Week-by-week field engagement, nutrition surveys, and school awareness drives conducted in Nellore.
+      </p>
+    </div>
+
+    <!-- Timeline Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- Week 1 -->
+      <div class="liquid-glass rounded-2xl overflow-hidden flex flex-col group hover:border-orange-500/50 transition-all duration-300">
+        <div class="relative w-full h-44 overflow-hidden cursor-pointer" onclick="previewImage('images/week1.jpg', 'Week 1 · Sachivalayam Sanctions')">
+          <img src="images/week1.jpg" alt="Week 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-orange-400 font-mono text-[11px] px-2.5 py-0.5 rounded-full border border-orange-400/30">
+            WEEK 01
+          </span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="text-sm font-semibold text-white tracking-tight">Sachivalayam Sanctions</h3>
+          <p class="text-xs text-white/60 mt-1.5 leading-relaxed">
+            Acquired official administrative permissions from the Sachivalayam at NGO Colony, Nellore.
+          </p>
+        </div>
+      </div>
+
+      <!-- Week 2 -->
+      <div class="liquid-glass rounded-2xl overflow-hidden flex flex-col group hover:border-orange-500/50 transition-all duration-300">
+        <div class="relative w-full h-44 overflow-hidden cursor-pointer" onclick="previewImage('images/week2.jpg', 'Week 2 · Community House Visits')">
+          <img src="images/week2.jpg" alt="Week 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-orange-400 font-mono text-[11px] px-2.5 py-0.5 rounded-full border border-orange-400/30">
+            WEEK 02
+          </span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="text-sm font-semibold text-white tracking-tight">Community House Visits</h3>
+          <p class="text-xs text-white/60 mt-1.5 leading-relaxed">
+            Conducted doorstep family surveys to evaluate local household dietary staples and routines.
+          </p>
+        </div>
+      </div>
+
+      <!-- Week 3 -->
+      <div class="liquid-glass rounded-2xl overflow-hidden flex flex-col group hover:border-orange-500/50 transition-all duration-300">
+        <div class="relative w-full h-44 overflow-hidden cursor-pointer" onclick="previewImage('images/week3.jpeg', 'Week 3 · Biometrics & Food Pyramid')">
+          <img src="images/week3.jpeg" alt="Week 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-orange-400 font-mono text-[11px] px-2.5 py-0.5 rounded-full border border-orange-400/30">
+            WEEK 03
+          </span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="text-sm font-semibold text-white tracking-tight">Awareness & BMI Camp</h3>
+          <p class="text-xs text-white/60 mt-1.5 leading-relaxed">
+            Presented visual food pyramids and calculated biometric BMI benchmarks at KNM Elementary School.
+          </p>
+        </div>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="liquid-glass rounded-2xl overflow-hidden flex flex-col group hover:border-orange-500/50 transition-all duration-300">
+        <div class="relative w-full h-44 overflow-hidden cursor-pointer" onclick="previewImage('images/week4.jpeg', 'Week 4 · High School Delegation')">
+          <img src="images/week4.jpeg" alt="Week 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-orange-400 font-mono text-[11px] px-2.5 py-0.5 rounded-full border border-orange-400/30">
+            WEEK 04
+          </span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="text-sm font-semibold text-white tracking-tight">High School Delegation</h3>
+          <p class="text-xs text-white/60 mt-1.5 leading-relaxed">
+            Coordinated campaign modules with the Headmistress of KNR Municipal Corporation High School.
+          </p>
+        </div>
+      </div>
+
+      <!-- Week 5 -->
+      <div class="liquid-glass rounded-2xl overflow-hidden flex flex-col group hover:border-orange-500/50 transition-all duration-300">
+        <div class="relative w-full h-44 overflow-hidden cursor-pointer" onclick="previewImage('images/week5.jpeg', 'Week 5 · Fruit Distribution & Hygiene')">
+          <img src="images/week5.jpeg" alt="Week 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-orange-400 font-mono text-[11px] px-2.5 py-0.5 rounded-full border border-orange-400/30">
+            WEEK 05
+          </span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="text-sm font-semibold text-white tracking-tight">Fruit Distribution & Hygiene</h3>
+          <p class="text-xs text-white/60 mt-1.5 leading-relaxed">
+            Shared sanitation hygiene routines and distributed seasonal fruit rations to school children.
+          </p>
+        </div>
+      </div>
+
+      <!-- Week 6 -->
+      <div class="liquid-glass rounded-2xl overflow-hidden flex flex-col group hover:border-orange-500/50 transition-all duration-300">
+        <div class="relative w-full h-44 overflow-hidden cursor-pointer" onclick="previewImage('images/week6.jpeg', 'Week 6 · Classroom Nutrition Workshop')">
+          <img src="images/week6.jpeg" alt="Week 6" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-orange-400 font-mono text-[11px] px-2.5 py-0.5 rounded-full border border-orange-400/30">
+            WEEK 06
+          </span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="text-sm font-semibold text-white tracking-tight">Classroom Engagement</h3>
+          <p class="text-xs text-white/60 mt-1.5 leading-relaxed">
+            Held interactive Q&A workshops breaking down essential vitamins, hydration, and avoiding processed foods.
+          </p>
+        </div>
+      </div>
+
+      <!-- Week 7 -->
+      <div class="liquid-glass rounded-2xl overflow-hidden flex flex-col group hover:border-orange-500/50 transition-all duration-300">
+        <div class="relative w-full h-44 overflow-hidden cursor-pointer" onclick="previewImage('images/week7.jpeg', 'Week 7 · Web Platform & Data Logging')">
+          <img src="images/week7.jpeg" alt="Week 7" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-orange-400 font-mono text-[11px] px-2.5 py-0.5 rounded-full border border-orange-400/30">
+            WEEK 07
+          </span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="text-sm font-semibold text-white tracking-tight">Web & Data Synthesis</h3>
+          <p class="text-xs text-white/60 mt-1.5 leading-relaxed">
+            Engineered the digital reporting platform and structured analytical survey outputs for presentation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Week 8 -->
+      <div class="liquid-glass rounded-2xl overflow-hidden flex flex-col group hover:border-orange-500/50 transition-all duration-300">
+        <div class="relative w-full h-44 overflow-hidden cursor-pointer" onclick="previewImage('images/week8.jpeg', 'Week 8 · Project Submission')">
+          <img src="images/week8.jpeg" alt="Week 8" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-orange-400 font-mono text-[11px] px-2.5 py-0.5 rounded-full border border-orange-400/30">
+            WEEK 08
+          </span>
+        </div>
+        <div class="p-4 flex flex-col flex-1">
+          <h3 class="text-sm font-semibold text-white tracking-tight">Final Academic Submission</h3>
+          <p class="text-xs text-white/60 mt-1.5 leading-relaxed">
+            Submitted the comprehensive 8-week CSP portfolio and community metrics to the department reviewers.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer Actions -->
+  <footer class="relative z-10 flex justify-center gap-4 pb-8">
+    <button onclick="openModal('journeyModal')" title="8-Week Timeline Modal" class="liquid-glass rounded-full p-3 text-white/80 hover:text-white hover:bg-white/10 transition-all hover:scale-110">
+      <i data-lucide="calendar" class="w-5 h-5"></i>
+    </button>
+    <button onclick="openModal('teamModal')" title="Team Cohort" class="liquid-glass rounded-full p-3 text-white/80 hover:text-white hover:bg-white/10 transition-all hover:scale-110">
+      <i data-lucide="users" class="w-5 h-5"></i>
+    </button>
+    <button onclick="openModal('manifestoModal')" title="Nutrition Manifesto" class="liquid-glass rounded-full p-3 text-white/80 hover:text-white hover:bg-white/10 transition-all hover:scale-110">
+      <i data-lucide="heart-pulse" class="w-5 h-5"></i>
+    </button>
+  </footer>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- Modal 1: 8-Week Journey Timeline Modal -->
+  <div id="journeyModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 modal-backdrop">
+    <div class="liquid-glass rounded-3xl max-w-5xl w-full max-h-[88vh] flex flex-col overflow-hidden border border-white/20 shadow-2xl bg-black/90">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <i data-lucide="calendar" class="w-5 h-5 text-orange-400"></i>
+          <h2 class="text-lg font-semibold text-white tracking-tight">8-Week CSP Journey (Overview)</h2>
+        </div>
+        <button onclick="closeModal('journeyModal')" class="liquid-glass rounded-full p-2 text-white/70 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- Week 1 -->
+        <div class="liquid-glass rounded-2xl p-4 flex gap-4 items-center group hover:border-orange-500/40 transition-all">
+          <div class="relative w-28 h-28 rounded-xl overflow-hidden flex-shrink-0 cursor-pointer" onclick="previewImage('images/week1.jpg', 'Week 1 · Sachivalayam Sanctions')">
+            <img src="images/week1.jpg" alt="Week 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-orange-400">WEEK 1</span>
+            <h4 class="font-semibold text-white text-sm">Sachivalayam Sanctions</h4>
+            <p class="text-xs text-white/70 mt-1 leading-relaxed">
+              Official permission and administrative approval acquired from the Sachivalayam in NGO Colony, Nellore.
+            </p>
+          </div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="liquid-glass rounded-2xl p-4 flex gap-4 items-center group hover:border-orange-500/40 transition-all">
+          <div class="relative w-28 h-28 rounded-xl overflow-hidden flex-shrink-0 cursor-pointer" onclick="previewImage('images/week2.jpg', 'Week 2 · Community House Visits')">
+            <img src="images/week2.jpg" alt="Week 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-orange-400">WEEK 2</span>
+            <h4 class="font-semibold text-white text-sm">House Visits</h4>
+            <p class="text-xs text-white/70 mt-1 leading-relaxed">
+              Conducted house visits to assess dietary habits and nutritional status of families in the community.
+            </p>
+          </div>
+        </div>  
+
+        <!-- Week 3 -->
+        <div class="liquid-glass rounded-2xl p-4 flex gap-4 items-center group hover:border-orange-500/40 transition-all">
+          <div class="relative w-28 h-28 rounded-xl overflow-hidden flex-shrink-0 cursor-pointer" onclick="previewImage('images/week3.jpeg', 'Week 3 · Biometric BMI & Food Pyramid')">
+            <img src="images/week3.jpeg" alt="Week 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-orange-400">WEEK 3</span>
+            <h4 class="font-semibold text-white text-sm">Awareness Program</h4>
+            <p class="text-xs text-white/70 mt-1 leading-relaxed">
+              Demonstrated hand-drawn balanced food pyramid posters and measured height & weight for BMI assessment.
+            </p>
+          </div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="liquid-glass rounded-2xl p-4 flex gap-4 items-center group hover:border-orange-500/40 transition-all">
+          <div class="relative w-28 h-28 rounded-xl overflow-hidden flex-shrink-0 cursor-pointer" onclick="previewImage('images/week4.jpeg', 'Week 4 · High School Delegation')">
+            <img src="images/week4.jpeg" alt="Week 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-orange-400">WEEK 4</span>
+            <h4 class="font-semibold text-white text-sm">High School Delegation</h4>
+            <p class="text-xs text-white/70 mt-1 leading-relaxed">
+              Met with the Headmistress and faculty of KNR Municipal Corporation High School.
+            </p>
+          </div>
+        </div>
+
+        <!-- Week 5 -->
+        <div class="liquid-glass rounded-2xl p-4 flex gap-4 items-center group hover:border-orange-500/40 transition-all">
+          <div class="relative w-28 h-28 rounded-xl overflow-hidden flex-shrink-0 cursor-pointer" onclick="previewImage('images/week5.jpeg', 'Week 5 · Fruit Distribution & Hygiene')">
+            <img src="images/week5.jpeg" alt="Week 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-orange-400">WEEK 5</span>
+            <h4 class="font-semibold text-white text-sm">Fruit Distribution & Hygiene</h4>
+            <p class="text-xs text-white/70 mt-1 leading-relaxed">
+              Collaborative hygiene guidelines and seasonal fresh fruit rations distributed at municipal high schools.
+            </p>
+          </div>
+        </div>
+
+        <!-- Week 6 -->
+        <div class="liquid-glass rounded-2xl p-4 flex gap-4 items-center group hover:border-orange-500/40 transition-all">
+          <div class="relative w-28 h-28 rounded-xl overflow-hidden flex-shrink-0 cursor-pointer" onclick="previewImage('images/week6.jpeg', 'Week 6 · Classroom Nutrition Engagement')">
+            <img src="images/week6.jpeg" alt="Week 6" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-orange-400">WEEK 6</span>
+            <h4 class="font-semibold text-white text-sm">Classroom Engagement</h4>
+            <p class="text-xs text-white/70 mt-1 leading-relaxed">
+              Interactive session with students explaining macronutrients, vitamins, drinking water hygiene, and cutting junk food.
+            </p>
+          </div>
+        </div>
+
+        <!-- Week 7 -->
+        <div class="liquid-glass rounded-2xl p-4 flex gap-4 items-center group hover:border-orange-500/40 transition-all">
+          <div class="relative w-28 h-28 rounded-xl overflow-hidden flex-shrink-0 cursor-pointer" onclick="previewImage('images/week7.jpeg', 'Week 7 · Web Platform & Data Logging')">
+            <img src="images/week7.jpeg" alt="Week 7" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-orange-400">WEEK 7</span>
+            <h4 class="font-semibold text-white text-sm">Web Portal & Documentation</h4>
+            <p class="text-xs text-white/70 mt-1 leading-relaxed">
+              Built and deployed the digital web platform and compiled complete analytical CSP reporting for academic review.
+            </p>
+          </div>
+        </div>
+
+        <!-- Week 8 -->
+        <div class="liquid-glass rounded-2xl p-4 flex gap-4 items-center group hover:border-orange-500/40 transition-all">
+          <div class="relative w-28 h-28 rounded-xl overflow-hidden flex-shrink-0 cursor-pointer" onclick="previewImage('images/week8.jpeg', 'Week 8 · Project Submission')">
+            <img src="images/week8.jpeg" alt="Week 8" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-orange-400">WEEK 8</span>
+            <h4 class="font-semibold text-white text-sm">Project Submission</h4>
+            <p class="text-xs text-white/70 mt-1 leading-relaxed">
+              Final project submission and presentation to the higher authorities, showcasing the impact of the nutrition awareness campaign.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Student Cohort Team Profiles -->
+  <div id="teamModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 modal-backdrop">
+    <div class="liquid-glass rounded-3xl max-w-4xl w-full max-h-[85vh] flex flex-col overflow-hidden border border-white/20 shadow-2xl bg-black/90">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <i data-lucide="users" class="w-5 h-5 text-orange-400"></i>
+          <h2 class="text-lg font-semibold text-white tracking-tight">Student Team Cohort · AI&DS</h2>
+        </div>
+        <button onclick="closeModal('teamModal')" class="liquid-glass rounded-full p-2 text-white/70 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Member 1 -->
+        <div class="liquid-glass rounded-2xl p-4 flex flex-col items-center text-center group hover:border-orange-500/40 transition-all">
+          <div class="w-28 h-36 rounded-xl overflow-hidden mb-3 border border-white/20 shadow-md cursor-pointer" onclick="previewImage('images/member1.jpeg', 'A. AKHIL BEJAY · 24JNA30008')">
+            <img src="images/member1.jpeg" alt="A. Akhil Bejay" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <h3 class="text-sm font-semibold text-white">A. AKHIL BEJAY</h3>
+          <span class="text-xs font-mono text-orange-400">24JNA30008</span>
+          <span class="text-[11px] text-white/60">AI&DS-A</span>
+          <span class="mt-2 text-[11px] font-medium text-white/80">Project Lead & Developer</span>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="liquid-glass rounded-2xl p-4 flex flex-col items-center text-center group hover:border-orange-500/40 transition-all">
+          <div class="w-28 h-36 rounded-xl overflow-hidden mb-3 border border-white/20 shadow-md cursor-pointer" onclick="previewImage('images/member2.jpg', 'G. ABHILASH KUMAR · 24JNA30043')">
+            <img src="images/member2.jpg" alt="G. Abhilash Kumar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <h3 class="text-sm font-semibold text-white">G. ABHILASH KUMAR</h3>
+          <span class="text-xs font-mono text-orange-400">24JNA30043</span>
+          <span class="text-[11px] text-white/60">AI&DS-A</span>
+          <span class="mt-2 text-[11px] font-medium text-white/80">Field Survey Lead</span>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="liquid-glass rounded-2xl p-4 flex flex-col items-center text-center group hover:border-orange-500/40 transition-all">
+          <div class="w-28 h-36 rounded-xl overflow-hidden mb-3 border border-white/20 shadow-md cursor-pointer" onclick="previewImage('images/member3.jpg', 'G. VISHNU VARDHAN · 24JNA30048')">
+            <img src="images/member3.jpg" alt="G. Vishnu Vardhan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <h3 class="text-sm font-semibold text-white">G. VISHNU VARDHAN</h3>
+          <span class="text-xs font-mono text-orange-400">24JNA30048</span>
+          <span class="text-[11px] text-white/60">AI&DS-A</span>
+          <span class="mt-2 text-[11px] font-medium text-white/80">Biometrics & BMI Analyst</span>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="liquid-glass rounded-2xl p-4 flex flex-col items-center text-center group hover:border-orange-500/40 transition-all">
+          <div class="w-28 h-36 rounded-xl overflow-hidden mb-3 border border-white/20 shadow-md cursor-pointer" onclick="previewImage('images/member4.jpg', 'G. RAMANA REDDY · 24JNA30047')">
+            <img src="images/member4.jpg" alt="G. Ramana Reddy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          </div>
+          <h3 class="text-sm font-semibold text-white">G. RAMANA REDDY</h3>
+          <span class="text-xs font-mono text-orange-400">24JNA30047</span>
+          <span class="text-[11px] text-white/60">AI&DS-A</span>
+          <span class="mt-2 text-[11px] font-medium text-white/80">Outreach Coordinator</span>
+        </div>
+      </div>
+
+      <div class="px-6 py-3 bg-white/[0.03] border-t border-white/10 flex items-center justify-between text-xs text-white/60 font-mono">
+        <span>Department of Artificial Intelligence & Data Science</span>
+        <span>Guide: Mr. K. V. Prasada Reddy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Nutrition Manifesto -->
+  <div id="manifestoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 modal-backdrop">
+    <div class="liquid-glass rounded-3xl max-w-xl w-full max-h-[85vh] flex flex-col overflow-hidden border border-white/20 shadow-2xl bg-black/90">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <i data-lucide="heart-pulse" class="w-5 h-5 text-orange-400"></i>
+          <h2 class="text-lg font-semibold text-white tracking-tight">THE NUTRITION REVOLUTION</h2>
+        </div>
+        <button onclick="closeModal('manifestoModal')" class="liquid-glass rounded-full p-2 text-white/70 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-6 space-y-4 text-sm text-white/80 leading-relaxed">
+        <p class="font-medium text-white">
+          "Good Nutrition for Good Health Creating Awareness About Healthy Food and Balanced Diet Among Rural Communities A Healthier Community Begins with a Healthier Plate! Our Community Service Project in Nellore, Andhra Pradesh, is dedicated to building a healthier future by educating rural families about the importance of balanced nutrition, healthy eating habits, and safe drinking water. Through awareness campaigns and community engagement, we encourage families to embrace nutritious local foods, fresh fruits, green vegetables, pulses, whole grains, and protein-rich meals while reducing their dependence on junk food and highly processed packaged products".
+        </p>
+        <p>
+          Carried out in Nellore, Andhra Pradesh, this community service project empowers families to substitute nutrient-poor packaged foods with balanced local staples, pulses, vegetables, and sanitary drinking water.
+        </p>
+        <div class="p-4 rounded-xl bg-orange-500/10 border border-orange-500/30 text-xs text-orange-300">
+          <div class="font-bold text-center">"NOURISH TODAY, THRIVE TOMORROW!"</div>
+          <br>
+          ✓ Micro-habits create generational wellness. Reducing excess sugar and salt preserves lifelong cardiovascular health.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-Screen Image Lightbox Preview Modal -->
+  <div id="imageLightbox" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl" onclick="closeImagePreview()">
+    <div class="relative max-w-4xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeImagePreview()" class="absolute -top-12 right-0 liquid-glass rounded-full p-2 text-white/80 hover:text-white">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <img id="lightboxImg" src="" alt="Enlarged view" class="rounded-2xl max-w-full max-h-[80vh] object-contain border border-white/20 shadow-2xl" />
+      <p id="lightboxCaption" class="mt-3 text-xs md:text-sm font-mono text-orange-400 text-center"></p>
+    </div>
+  </div>
+
+  <!-- Custom Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
